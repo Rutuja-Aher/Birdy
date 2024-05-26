@@ -7,6 +7,7 @@ import requests
 import json
 from constants.Birds_labels import lab
 import os
+from tempfile import NamedTemporaryFile
 
 model = load_model("./Model/Birdy.h5",compile=False)
 
@@ -34,6 +35,7 @@ def processed_img(img_path):
     display_bird_info(response)
 
 def run():
+    os.makedirs('./upload_images', exist_ok=True)
     img1 = Image.open('./meta/Birdy_logo.png')
     img1 = img1.resize((350,350))
     st.image(img1,use_column_width=False)
@@ -44,7 +46,7 @@ def run():
     img_file = st.file_uploader("Choose an Image of Bird", type=["jpg", "png"])
     if img_file is not None:
         st.image(img_file,use_column_width=False)
-        save_image_path = './upload_images/'+img_file.name
+        save_image_path = os.path.join('./upload_images', img_file.name)
         with open(save_image_path, "wb") as f:
             f.write(img_file.getbuffer())
 
