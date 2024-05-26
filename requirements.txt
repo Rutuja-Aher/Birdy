@@ -3,3 +3,4 @@ Pillow
 streamlit
 Keras
 tensorflow
+gdown

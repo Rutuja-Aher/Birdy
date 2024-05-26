@@ -6,8 +6,10 @@ from keras.models import load_model
 import requests
 import json
 from constants.Birds_labels import lab
+import os
 
-model = load_model('./Model/Birdy.h5',compile=False)
+model = load_model("./Model/Birdy.h5",compile=False)
+
 def display_bird_info(bird):
     st.write(f"{bird['description']}")
     st.write(f"**Habitat:** {bird['habitat']}")
@@ -27,7 +29,7 @@ def processed_img(img_path):
     y = int(y)
     result = lab[y]
     st.success("Predicted Bird is: "+result)
-    bird_res = requests.get(f'http://localhost:5000/bird/{y}')
+    bird_res = requests.get(f'https://rutujaaher.pythonanywhere.com/bird/{y}')
     response = json.loads(bird_res.text)
     display_bird_info(response)
 

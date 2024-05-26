@@ -25,14 +25,13 @@ After uploading a bird image, it will show the species name and bird description
 
 For backend.
 ```sh
-cd /Birdy/Birdy_API
+cd /Birdy_API
 pip install flask
 python server.py
 ```
 
 For frontend.
 ```sh
-cd Birdy
 pip install -r requirements.txt
 streamlit run Birdy.py
 ```

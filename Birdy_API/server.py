@@ -14,9 +14,5 @@ def get_bird_by_id(bird_id):
     else:
         return jsonify({'error': 'Bird not found'}), 404
 
-@app.route('/')
-def hello():
-    return 'Hello, World!'
-
 if __name__ == '__main__':
     app.run(port=5000)
